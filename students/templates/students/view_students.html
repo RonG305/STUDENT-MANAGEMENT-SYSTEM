@@ -1,0 +1,27 @@
+{% extends 'students/base.html' %}
+
+{% block content %}
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">STUDENT DETAILS</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>NAME:<strong>{{ student.first_name }} {{ student.last_name }}</strong> </p>
+           <p>REG NUMBER: <strong>{{ student.student_number}}</strong></p>
+           <p>EMAIL: <strong>{{ student.email}}</strong></p>
+           <p>COURSE: <strong>{{ student.field_of_study }}</strong></p>
+           <p>GPA: <strong>{{student.gpa}}</strong></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

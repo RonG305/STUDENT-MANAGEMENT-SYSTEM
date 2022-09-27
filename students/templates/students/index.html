@@ -1,0 +1,58 @@
+{% extends 'students/base.html' %}
+
+{% block content %}
+{%  if students %}
+<div class="card">
+  <div class="card-header">
+    <h4>STUDENT DETAILS</h4>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">All student details</h5>
+    <table class="table table-hover table-dark my-3">
+      <thead>
+        <tr>
+          <th scope="col">REGISTRATION NUMBER</th>
+          <th scope="col">FIRST NAME</th>
+          <th scope="col">LAST NAME</th>
+          <th scope="col">E-MAIL</th>
+          <th scope="col">FIELD OF STUDY</th>
+          <th scope="col">GPA</th>
+
+          <th scope="col">ACTIONS</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for student in students %}
+        <tr>
+          <th scope="row">{{ student.student_number }}</th>
+          <td>{{ student.first_name}}</td>
+          <td>{{ student.last_name}}</td>
+          <td>{{ student.email }}</td>
+          <td>{{ student.field_of_study }}</td>
+          <td>{{ student.gpa }}</td>
+          <td>
+            <button type="button" class="btn btn-success"><a href="{% url 'create_student' %}" class="text-decoration-none">Add</a></button>
+            <button type="button" class="btn btn-info"><a href="{% url 'update_student' student.id %}" class="text-decoration-none"><i class="fa-solid fa-pen-to-square"></i></a></button>
+            <button type="button" class="btn btn-danger"><a href="{% url 'delete_student' student.id %}" class="text-decoration-none"><i class="fa-solid fa-trash-can fa-lg"></i></a></button>
+          </td>
+        </tr>
+        {% endfor %}
+   
+    
+    {%  else %}
+    <div class="card text-white bg-info mb-3 mx-4 my-4" style="max-width: 100%;">
+      <div class="card-header">Student information</div>
+      <div class="card-body">
+      
+        <p class="card-text">No students on the the list. Please add students to the database.</p>
+        <button type="button" class="btn btn-warning"><a href="{%url 'create_student'%}">Add student</a></button>
+      </div>
+        
+     
+  {% endif %}
+   
+  </div>
+</div>
+
+
+{% endblock content %}
