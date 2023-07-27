@@ -12,9 +12,7 @@ class StudentForm(forms.ModelForm):
             'last_name',
             'email',
             'field_of_study',
-            'gpa'
-
-            
+            'gpa'    
         ]
 
         labels = {

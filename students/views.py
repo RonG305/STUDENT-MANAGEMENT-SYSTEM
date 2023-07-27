@@ -4,13 +4,16 @@ from django.http import HttpResponseRedirect
 from students.forms import StudentForm
 from students.models import Student
 
+
 # Create your views here.
+
 def index(request):
+    students = Student.objects.all()
     context = {
-        'students': Student.objects.all()
+        'students': students
     }
     return render(request, 'students/index.html', context)
-
+   
 
 def create_student(request):
     form = StudentForm()
